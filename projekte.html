@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aram - Projekte</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%; /* Sorgt dafür, dass der HTML- und BODY-Tag die volle Höhe einnehmen */
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column; /* Layout in Spaltenrichtung */
+        font-family: "Open Sans", sans-serif;
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 32px;
+      }
+
+      header img {
+        width: 50px;
+      }
+
+      nav {
+        display: flex;
+      }
+
+      .menu-link {
+        color: white;
+        text-decoration: none;
+        margin-left: 16px;
+        font-size: 16px;
+        transition: font-size 0.3s ease;
+      }
+
+      .menu-link:hover {
+        font-size: 18px;
+      }
+
+      .content {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1024px; /* Stellen Sie sicher, dass dies auf allen Seiten gleich ist */
+        margin: 0 auto; /* Zentriert den Content-Bereich und gibt automatischen Abstand oben und unten */
+        width: 100%;
+    }
+
+    .section {
+        background: white;
+        border-radius: 8px;
+        padding: 40px; /* Gleiches Padding für alle Abschnitte */
+        margin-bottom: 20px; /* Gleiches margin-bottom für alle Abschnitte */
+        width: 100%; /* Stellt sicher, dass die Breite innerhalb des max-width des .content-Bereichs responsiv bleibt */
+    }
+
+      .intro-section {
+        background: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+      }
+
+      .intro-text {
+        flex: 1;
+        margin-right: 20px;
+      }
+
+      .intro-image {
+        width: 300px;
+        height: 300px;
+        border-radius: 150px;
+        overflow: hidden;
+      }
+
+      .intro-text p {
+        text-align: justify;
+        text-justify: inter-word;
+      }
+
+      .intro-image img {
+        width: 100%;
+        height: auto;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1em 0;
+        flex-shrink: 0; /* Verhindert, dass der Footer verkleinert wird */
+      }
+
+      footer a {
+       color: #fff;
+       text-decoration: none;
+      }
+
+      footer a:hover {
+       text-decoration: underline;
+      }
+
+
+      h2 {
+        color: #333;
+      }
+
+      .project-image:hover {
+        transform: scale(1.05); /* Vergrößert das Bild beim Hover */
+      }
+
+      h2,
+      h3 {
+        margin-top: 0;
+      }
+
+      .project {
+        display: flex;
+        align-items: flex-start; /* Streckt die Kinder auf volle Containerhöhe */
+        margin-bottom: 40px; /* Abstand zwischen den Projekten */
+      }
+
+      .project-image {
+        flex-shrink: 0;
+        width: 300px;
+        height: auto;
+        margin-right: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .project-details,
+      .project-image {
+        margin-top: 0; /* Ensure that top margin is removed for both text and image */
+      }
+
+      .project-details h2,
+      .project-details h3 {
+        margin-top: 0; /* Remove top margin from headings inside project details */
+      }
+
+      .project:nth-child(even) .project-image {
+        order: 2; /* Bild nach dem Text für gerade Projekte */
+        margin-left: 20px; /* Fügt Abstand auf der linken Seite hinzu */
+      }
+
+      .project:nth-child(even) .project-details {
+        order: 1; /* Text vor dem Bild für gerade Projekte */
+        margin-right: 20px; /* Fügt Abstand auf der rechten Seite hinzu */
+      }
+
+      .project:nth-child(odd) .project-image {
+        margin-right: 20px; /* Fügt Abstand auf der rechten Seite hinzu */
+      }
+
+      .project:nth-child(odd) .project-details {
+        margin-left: 20px; /* Fügt Abstand auf der linken Seite hinzu */
+      }
+
+      @media (max-width: 768px) {
+        .project-image {
+          width: 100%; /* Bild nimmt auf kleineren Bildschirmen die volle Breite ein */
+          margin-right: 0; /* Entfernt den rechten Abstand auf kleineren Bildschirmen */
+          margin-bottom: 20px; /* Fügt einen Abstand unter dem Bild auf kleineren Bildschirmen hinzu */
+        }
+
+        .project-image,
+        .project-details {
+          margin-top: 0;
+        }
+      }
+
+
+
+      .modal {
+        display: none; /* Versteckt das Modal standardmäßig */
+        position: fixed; /* Positioniert das Modal über dem Inhalt */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        align-items: center;
+        justify-content: center;
+        z-index: 1000; /* Stellt sicher, dass das Modal über allen anderen Inhalten liegt */
+      }
+
+      .modal-content {
+        width: 80%; /* Breite des Modals, anpassen nach Bedarf */
+        max-height: 80vh; /* Maximale Höhe des Modals, anpassen nach Bedarf */
+        object-fit: contain; /* Stellt sicher, dass das gesamte Bild sichtbar ist */
+      }
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .project-details p {
+        text-align: justify;
+        text-justify: inter-word;
+      }
+
+      .projekte-section {
+        background: white;
+        border-radius: 8px;
+        padding: 40px; /* Innenabstand der Sektion */
+        margin: 20px 0;
+        text-align: justify;
+        max-width: 1024px;
+        width: 100%;
+      }
+
+      header a img {
+        transition: transform 0.3s ease;
+      }
+        
+      header a:hover img {
+        transform: scale(1.1); /* Das Logo wird beim Hover um 10% größer */
+      }
+
+      nav {
+        white-space: nowrap;
+      }
+
+      .menu-link {
+        color: white; /* Grundfarbe */
+        text-decoration: none;
+        margin-left: 16px;
+        font-size: 16px;
+        transition: color 0.3s, font-size 0.3s; /* Weiche Übergänge für Farbe und Schriftgröße */
+        display: inline-block; /* Damit sich die Größe der Links nicht auf andere Elemente auswirkt */
+
+      }
+      .menu-link:hover {
+        color:#ffffff;
+        font-size: 17px;
+      }
+
+      .menu-link:not(:hover) {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+        <a href="index.html">
+            <img src="Logo/logo111.png" alt="Aram Logo">
+        </a>
+      <nav>
+        <a class="menu-link" href="index.html">Home</a>
+        <a class="menu-link" href="bildungsweg.html">Ausbildung</a>
+        <a class="menu-link" href="berufsweg.html">Berufsweg</a>
+        <a class="menu-link" href="projekte.html">Projekte</a>
+        <a class="menu-link" href="kontakt.html">Kontakt</a>
+      </nav>
+    </header>
+
+    <div class="content">
+      <section class="projekte-section">
+        <h2>PROJEKTE</h2>
+
+        <h3>MASTERARBEIT:</h3>
+        <h3>
+          Künstliche Intelligenz und Computer Vision zur automatisierten
+          Erkennung von Montageschritten im Kontext von Assistenzsystemen
+          <p>
+            
+            <em>(...noch in Arbeit)</em>
+          </p>
+        </h3>
+        <!-- TEXT 1 -->
+        <div class="project">
+          <img
+            src="Projekte/Masterarbeit.png"
+            alt="Projektbild"
+            class="project-image"
+            onclick="showModal(this.src)"
+          />
+          <div class="project-details">
+            <h3>Aufgabenstellung</h3>
+            <p>
+              Der Einsatz von <strong>Werker Assistenzsystemen (WAS)</strong> in
+              der manuellen Montage ist über die letzten Jahre stark gestiegen.
+              Informationen, die vorher als impliziten oder expliziten Wissen
+              bei Mitarbeitenden vorlag oder rudimentär über ein MES abrufbar
+              waren werden über WAS den Mitarbeitenden direkt zur Verfügung
+              gestellt. WAS sind bzgl. der Autorierung der Inhalte und bzgl. der
+              Umsetzung von Kontextsensitivität noch sehr aufwändig. Aus diesem
+              Grund soll für die <strong>Erfassung der Tätigkeiten</strong> im
+              Montagebereich eine
+              <strong>automatisierte Erkennung</strong> mittels
+              <strong
+                >KI-Methoden konzipiert, implementiert und validiert</strong
+              >
+              werden. Dazu soll mittels
+              <strong>Computer Vision, Human Activity Recognition (HAR)</strong>
+              und <strong>Speech recognition</strong> Bewegungen, Aktivitäten
+              usw. erkannt werden. Diese Ergebnisse sollen dann
+              <strong>über eine Schnittstelle</strong> an ein Assistenzsystem
+              und andere Systemen übergeben werden,
+              <strong
+                >um daraus Assistenzschritte zu erstellen oder Assistenzschritte
+                automatisch auf Korrektheit zu überprüfen</strong
+              >.
+            </p>
+          </div>
+        </div>
+
+        <h3>BACHELORARBEIT:</h3>
+        <h3>
+          Entwicklung eines mobilen kollaborativen Robotersystems für
+          Schäumungsprozesse in der Automobilindustrie
+        </h3>
+        <!-- TEXT 1 -->
+        <div class="project">
+          <img
+            src="Projekte/Bild4.png"
+            alt="Projektbild"
+            class="project-image"
+            onclick="showModal(this.src)"
+          />
+          <div class="project-details">
+            <h3>Aufgabenstellung</h3>
+            <p>
+              Um die <strong>Flexibilität</strong> zu erhöhen und das
+              <strong>Personal vor Ort zu unterstützen</strong>, ist geplant,
+              den Schäumprozess für die Herstellung von Tüllen zu
+              <strong>automatisieren</strong>. Dies soll mithilfe eines
+              <strong>Robotersystems</strong> geschehen, das die manuelle
+              Platzierung des Mischkopfs auf die Werkzeugöffnung ersetzt. Das
+              Besondere an diesem Robotersystem ist, dass es die Positionen der
+              Werkzeuge und deren Öffnungen
+              <strong>eigenständig</strong> erkennen soll, anstatt vordefinierte
+              Positionen anzufahren. Dies erhöht die Flexibilität, da sich die
+              Anordnung und Anzahl der Schäumanlagen und Werkzeuge in den
+              Werkerhallen oft ändert. Das Robotersystem muss ohne manuelle
+              Neuprogrammierung in neuen Umgebungen funktionieren und in
+              bestehende Anlagen integriert werden können. Es soll zwei
+              Positionen für jedes Werkzeug bestimmen können: den Standort des
+              Werkzeugs und die genaue Lage der Öffnung. Da die Werkzeuge
+              unterschiedliche Größen und Formen haben, variieren die Positionen
+              der Öffnungen in X-, Y- und Z-Richtung. Das Robotersystem muss
+              auch in realen Industrieumgebungen funktionieren.
+            </p>
+          </div>
+        </div>
+
+        <!-- TEXT 2 -->
+        <div class="project">
+          <div class="project-details">
+            <h3>Prototyp</h3>
+            <p>
+              Mit dem erfolgreichen Abschluss der Bachelorarbeit wurde ein
+              <strong>vollständiger Prototyp</strong> realisiert, ein mobiler
+              Manipulator bestehend aus <strong>zwei Teilsystemen</strong>.
+              Dieser Prototyp wurde eigenständig entwickelt und zeichnet sich
+              durch eine
+              <strong>sorgfältige Konzeption und Entwurf</strong> aus, die
+              darauf abzielten, spezifischen Anforderungen gerecht zu werden.
+              Der Entwicklungsprozess umfasste die Gestaltung in verschiedenen
+              Domänen wie <strong>Mechanik, Elektronik und Informatik</strong>.
+              Im Anschluss an diese domänenspezifischen Entwürfe erfolgte die
+              <strong>Systemintegration</strong>, bei der die einzelnen Domänen
+              zu einem funktionierenden Gesamtsystem zusammengeführt wurden. Ein
+              entscheidender Schritt war die
+              <strong>Validierung und Verifizierung</strong> des Prototyps, um
+              zu überprüfen, ob alle Anforderungen erfüllt wurden und an welchen
+              Bereichen eventuell noch gearbeitet werden musste. Die
+              <strong>Entwicklung, Auslegung und Konstruktion</strong> des
+              Prototyps erfolgten dabei in
+              <strong>eigenständiger Arbeit</strong>.
+            </p>
+          </div>
+          <img
+            src="Projekte/Bild3.png"
+            alt="Projektbild"
+            class="project-image"
+            onclick="showModal(this.src)"
+          />
+        </div>
+
+        <!-- TEXT 3 -->
+        <div class="project">
+          <img
+            src="Projekte/Bild6.jpg"
+            alt="Projektbild"
+            class="project-image"
+            onclick="showModal(this.src)"
+          />
+          <div class="project-details">
+            <h3>Schnittstellendiagramm</h3>
+            <p>
+              Das Schnittstellendiagramm illustriert die Zusammensetzung und
+              Interaktionen zwischen den zwei Teilsystemen des Gesamtsystems.
+              <strong> Teilsystem 1</strong> beinhaltet ein
+              <strong>Fahrwerk</strong>, ausgestattet mit einer Vielzahl von
+              Sensoren, die <strong>autonomes Fahren</strong> ermöglichen. Ein
+              zentraler Sensor ist der <strong>Spurführungssensor</strong>, der
+              speziell markierte Fahrbahnen erkennt, die durch fluoreszierende
+              Bänder auf dem Boden gekennzeichnet sind. Hinzu kommt ein
+              <strong>RFID-Gerät</strong>, das die Position der Werkzeuge
+              erfasst und es dem Fahrzeug ermöglicht, sich entsprechend zu
+              positionieren. Für die Bewegung sorgen
+              <strong>zwei Motoren</strong>, die über H-Brücken gesteuert
+              werden. Das Herzstück dieses Teilsystems bildet eine
+              <strong>Controllino SPS-Steuerungseinheit</strong>, die mit C/C++
+              programmiert ist. <strong>Teilsystem 2</strong> umfasst einen
+              <strong>kollaborativen Roboter</strong>, den UR3, der mit
+              notwendigen Sensoren wie einer <strong>Kamera</strong> und einem
+              <strong>Distanzsensor</strong> ausgestattet ist. Diese Sensoren
+              erlauben es dem Roboter, die Löcher der zu befüllenden Werkzeuge
+              präzise zu lokalisieren und anzusteuern. Das
+              <strong>Schnittstellendiagramm</strong> zeigt, wie diese
+              <strong>beiden Teilsysteme interagieren</strong>, um eine
+              <strong>nahtlose und effiziente Operation</strong> zu
+              gewährleisten. Es veranschaulicht die Datenflüsse und
+              Steuerbefehle zwischen dem Fahrwerk und dem Roboter, wobei
+              besonderes Augenmerk auf die Integration der unterschiedlichen
+              Sensortechnologien und der Steuereinheiten gelegt wird.
+            </p>
+          </div>
+        </div>
+
+        <!-- Weitere Projekte hinzufügen -->
+      </section>
+    </div>
+
+    <div class="modal" id="modal">
+      <span
+        class="close"
+        onclick="document.getElementById('modal').style.display='none'"
+        >&times;</span
+      >
+      <img class="modal-content" id="modal-image" />
+    </div>
+
+    <script>
+      function showModal(src) {
+        var modalImg = document.getElementById("modal-image");
+        var modal = document.getElementById("modal");
+        modal.style.display = "flex";
+        modalImg.src = src;
+      }
+    </script>
+
+    <footer>
+      <p>© 2023 Aram</p>
+      <p>
+       <a href="datenschutz.html">Rechtliches</a>
+      </p>
+    </footer>
+  </body>
+</html>

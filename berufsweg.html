@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aram - Berufsweg</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Open Sans', sans-serif;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em 32px;
+        }
+
+        header img {
+            width: 50px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        .menu-link {
+            color: white;
+            text-decoration: none;
+            margin-left: 16px;
+            font-size: 16px;
+            transition: font-size 0.3s ease;
+        }
+
+        .menu-link:hover {
+            font-size: 18px;
+        }
+
+        .content {
+         flex: 1;
+         padding: 20px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         max-width: 1024px; /* Stellen Sie sicher, dass dies auf allen Seiten gleich ist */
+         margin: 0 auto; /* Zentriert den Content-Bereich und gibt automatischen Abstand oben und unten */
+         width: 100%;
+        }
+
+        .section {
+         background: white;
+         border-radius: 8px;
+         padding: 40px; /* Gleiches Padding für alle Abschnitte */
+         margin-bottom: 20px; /* Gleiches margin-bottom für alle Abschnitte */
+         width: 100%; /* Stellt sicher, dass die Breite innerhalb des max-width des .content-Bereichs responsiv bleibt */
+        }
+
+        .berufsweg-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            flex-shrink: 0;
+        }
+
+        footer a {
+         color: #fff;
+         text-decoration: none;
+        }
+
+        footer a:hover {
+          text-decoration: underline;
+        }
+
+
+        h2 {
+            color: #333;
+        }
+
+        .berufsweg-section h3 {
+         margin-top: 50px; /* Erhöhter Abstand */
+        }
+
+        .berufsweg-section, .ausbildung-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0; /* Oben und unten Margin, links und rechts sind 0 für Zentrierung */
+            text-align: justify;
+            max-width: 1024px; /* Breite der Sektionen einstellen */
+            width: 100%; /* Stellt sicher, dass die Breite responsiv bleibt */
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+
+       .work-logo {
+         height: 40px; /* Anpassen nach Bedarf */
+         vertical-align: middle;
+         margin-right: 5px;
+         transition: transform 0.3s ease;
+        }
+
+       .bold {
+         font-weight: bold;
+        }
+
+        .work-link {
+         display: inline-flex; /* Ermöglicht die Transformation des gesamten Elements */
+         align-items: center; /* Zentriert die Elemente vertikal */
+         text-decoration: none;
+         color: #333;
+         transition: transform 0.3s ease;
+        }
+
+        .work-link:hover {
+         transform: scale(1.1); /* Vergrößert den Link beim Hover */
+        }
+
+        .work-link:hover .work-logo {
+         transform: scale(1.1); /* Vergrößert auch das Logo beim Hover */
+        }
+
+        header a img {
+         transition: transform 0.3s ease;
+        }
+        
+        header a:hover img {
+         transform: scale(1.1); /* Das Logo wird beim Hover um 10% größer */
+        }
+
+        nav {
+         white-space: nowrap;
+        }
+
+        .menu-link {
+         color: white; /* Grundfarbe */
+         text-decoration: none;
+         margin-left: 16px;
+         font-size: 16px;
+         transition: color 0.3s, font-size 0.3s; /* Weiche Übergänge für Farbe und Schriftgröße */
+         display: inline-block; /* Damit sich die Größe der Links nicht auf andere Elemente auswirkt */
+
+        }
+        .menu-link:hover {
+         color:#ffffff;
+         font-size: 17px;
+        }
+
+        .menu-link:not(:hover) {
+         color: rgba(255, 255, 255, 0.8);
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="Logo/logo111.png" alt="Aram Logo">
+        </a>
+        <nav>
+            <a class="menu-link" href="index.html">Home</a>
+            <a class="menu-link" href="bildungsweg.html">Ausbildung</a>
+            <a class="menu-link" href="berufsweg.html">Berufsweg</a>
+            <a class="menu-link" href="projekte.html">Projekte</a>
+            <a class="menu-link" href="kontakt.html">Kontakt</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <section class="berufsweg-section">
+            <h2>BERUFSWEG</h2>
+            <p>Hier folgen Details zu meinem Berufsweg, einschließlich meiner Rollen, Verantwortlichkeiten und Errungenschaften.</p>
+
+            <h3>          
+                <a href="https://www.lps.ruhr-uni-bochum.de/" class="work-link"
+                ><img
+                  src="Logo/LPS.png"
+                  alt="RUB Logo"
+                  class="work-logo"
+                />Ruhr-Universität Bochum | Lehrstuhl für Produktionssysteme</a
+              ></h3>
+
+            <p><em>Wissenschaftlicher Assistent</em> (07/2022 – 04/2023)</p>
+            <ul>
+                <li>Unterstützung und Beratung bei der digitalen Transformation von internationalen Unternehmen</li>
+                <li>Erstellung von Selbstlernmodulen zu den Themen Industrie 4.0 und digitale Geschäftsmodelle</li>
+                <li>Vorstellung der Selbstlernmodule im internationalen Projektkonsortium</li>
+                <li>Durchführung von Workshops</li>
+            </ul>
+
+
+            <h3>
+                <a href="https://cademy.com/" class="work-link"
+                ><img
+                  src="Logo/CAD.jpeg"
+                  alt="RUB Logo"
+                  class="work-logo"
+                />Cademy GmbH</a
+                ></h3>
+            <p><em>Bachelorand: Projektleitung</em> (08/2021 – 03/2022)</p>
+            <ul>
+                <li>Eigenständige Entwicklung eines mobilen kollaborativen Robotersystems für die Automobilindustrie</li>
+            </ul>
+
+            
+            <h3>
+                <a href="https://cademy.com/" class="work-link"
+                ><img
+                  src="Logo/CAD.jpeg"
+                  alt="RUB Logo"
+                  class="work-logo"
+                />Cademy GmbH</a
+                ></h3>
+            <p><em>Fachpraktikant</em> (03/2021 – 07/2021)</p>
+            <ul>
+                <li>Einarbeitung in folgende Themenbereiche: Controllino SPS (industrialisierter Arduino), Fahrerlose Transportsysteme, kollaborative Roboter, Konstruktion und Additive Fertigung</li>
+                <li>Unterstützende Tätigkeit bei der Forschung für Trennmittelfreie Fertigung für das Fraunhofer Institut</li>
+                <li>Vorbereitende und unterstützende Tätigkeit bei der Qualitätsprüfung</li>
+                <li>Programmierung von Siemens LOGO Steuereinheiten</li>
+            </ul>
+
+            <h3>
+                <a href="https://www.veka.de/start/" class="work-link"
+                ><img
+                  src="Logo/VEKA.png"
+                  alt="RUB Logo"
+                  class="work-logo"
+                />VEKA AG</a
+                ></h3>
+            <p><em>Studentische Aushilfe</em> (09/2019 – 10/2020)</p>
+            <ul>
+                <li>Mitarbeit bei der Kommissionierung und Verpackung</li>
+            </ul>
+
+
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2023 Aram</p>
+        <p>
+            <a href="datenschutz.html">Rechtliches</a>
+        </p>
+    </footer>
+
+</body>
+</html>
