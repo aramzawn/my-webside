@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aram - Ausbildung</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        font-family: "Open Sans", sans-serif;
+        background: #f0f0f0;
+        color: #333;
+        min-height: 100vh;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em 32px;
+      }
+
+      header img {
+        width: 50px;
+      }
+
+      nav {
+        display: flex;
+      }
+
+      .menu-link {
+        color: white;
+        text-decoration: none;
+        margin-left: 16px;
+        font-size: 16px;
+        transition: font-size 0.3s ease;
+      }
+
+      .menu-link:hover {
+        font-size: 18px;
+      }
+
+      .content {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1024px; /* Stellen Sie sicher, dass dies auf allen Seiten gleich ist */
+        margin: 0 auto; /* Zentriert den Content-Bereich und gibt automatischen Abstand oben und unten */
+        width: 100%;
+    }
+
+    .section {
+        background: white;
+        border-radius: 8px;
+        padding: 40px; /* Gleiches Padding für alle Abschnitte */
+        margin-bottom: 20px; /* Gleiches margin-bottom für alle Abschnitte */
+        width: 100%; /* Stellt sicher, dass die Breite innerhalb des max-width des .content-Bereichs responsiv bleibt */
+    }
+
+      .berufsweg-section {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        max-width: 1024px; /* Breite der Gesamtsektion einstellen */
+        width: 100%;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 1em 0;
+      }
+
+      footer a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+
+      h2 {
+        color: #333;
+      }
+
+      .university-logo {
+        height: 40px;
+        vertical-align: middle;
+        margin-right: 5px;
+        transition: transform 0.3s ease;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+
+      .university-link {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+        transition: transform 0.3s ease;
+      }
+
+      .university-link:hover {
+        transform: scale(1.1);
+      }
+
+      .university-link:hover .university-logo {
+        transform: scale(1.1);
+      }
+
+      .berufsweg-section h3 {
+        margin-top: 50px; /* Gleicher Abstand wie im Berufsweg */
+      }
+
+      header a img {
+        transition: transform 0.3s ease;
+      }
+
+      header a:hover img {
+        transform: scale(1.1); /* Das Logo wird beim Hover um 10% größer */
+      }
+
+      nav {
+        white-space: nowrap;
+      }
+
+      .menu-link {
+        color: white; /* Grundfarbe */
+        text-decoration: none;
+        margin-left: 16px;
+        font-size: 16px;
+        transition: color 0.3s, font-size 0.3s; /* Weiche Übergänge für Farbe und Schriftgröße */
+        display: inline-block; /* Damit sich die Größe der Links nicht auf andere Elemente auswirkt */
+
+      }
+      .menu-link:hover {
+        color:#ffffff;
+        font-size: 17px;
+      }  
+
+      .menu-link:not(:hover) {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .flag-link {
+        margin-left: 24px; /* Abstand zur Navigation */
+        display: inline-block; /* Damit es in der gleichen Zeile wie die Menülinks bleibt */
+        vertical-align: middle; /* Zentriert es vertikal mit den Menülinks */
+      }
+
+      .flag-link img {
+        height: 15px; /* Die Höhe der Flagge */
+        width: auto; /* Die Breite wird automatisch eingestellt */
+        cursor: pointer; /* Zeigt einen Handzeiger, um die Klickbarkeit anzuzeigen */
+      }  
+
+      /* Dies fügt den Hover-Effekt hinzu */
+      .flag-link:hover img {
+        transform: scale(1.1); /* Vergrößert das Bild beim Darüberfahren */
+        transition: transform 0.2s; /* Sanfte Animation */
+      }
+
+    @media screen and (max-width: 768px) {
+     header {
+       flex-direction: column;
+       align-items: flex-start;
+     }
+
+     nav {
+      width: 100%;
+      justify-content: center;
+      padding-top: 10px;
+     }
+
+     .menu-link {
+      margin: 0;
+      padding: 10px;
+      text-align: center;
+     }
+
+     .content {
+      padding: 10px;
+     }
+
+     .intro-section, .about-me, .personal-section {
+      flex-direction: column;
+     }
+
+     .intro-text, .intro-image {
+      margin: 10px 0;
+     }
+
+     .cv-button {
+      width: 100%;
+      margin-top: 20px;
+     }
+
+     .intro-image img {
+      width: 80%; /* Verkleinern des Bildes auf mobilen Geräten */
+     }
+
+     /* Anpassung der Flaggen-Größe und Position */
+     .flag-link img {
+       height: 15px; /* Anpassung der Größe für kleine Displays */
+     }
+    }
+
+
+     
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index_en.html">
+            <img src="Logo/logo111.png" alt="Aram Logo">
+        </a>
+        <nav>
+            <a class="menu-link" href="index_en.html">Home</a>
+            <a class="menu-link" href="education_en.html">Education</a>
+            <a class="menu-link" href="career_en.html">Career</a>
+            <a class="menu-link" href="projects_en.html">Projects</a>
+            <a class="menu-link" href="contact_en.html">Contact</a>
+            <a class="flag-link" href="bildungsweg.html" title="Switch to German">
+              <img src="Sprache/DEU.png" alt="German">
+            </a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <section class="berufsweg-section">
+            <h2>EDUCATION</h2>
+            <p>
+                Here are the details of my educational background, including my
+                roles, responsibilities, and accomplishments.
+            </p>
+
+            <h3>
+                <a href="https://www.rub.de/" class="university-link">
+                    <img src="Logo/RUB.png" alt="RUB Logo" class="university-logo"/>Ruhr University Bochum
+                </a>
+            </h3>
+            <p><em>Master of Science</em> (04/2022 – Est. 04/2024)</p>
+            <ul>
+                <li>
+                    <span class="bold">Major, current GPA:</span> Mechanical Engineering,
+                    3.8
+                </li>
+                <li>
+                    <span class="bold">Specialization:</span> Design and
+                    Automation Engineering
+                </li>
+                <li>
+                    <span class="bold">Master's Thesis:</span> Artificial Intelligence and
+                    Computer Vision for Automated Recognition of Assembly Steps
+                    in the Context of Assistance Systems
+                </li>
+            </ul>
+
+            <h3>
+                <a href="https://www.upm.edu.my/" class="university-link">
+                    <img src="Logo/UPM.png" alt="UPM Logo" class="university-logo"/>Universiti Putra Malaysia
+                </a>
+            </h3>
+            <p><em>Semester Abroad</em> (03/2023 – 07/2022)</p>
+
+            <h3>
+                <a href="https://www.rub.de/" class="university-link">
+                    <img src="Logo/RUB.png" alt="RUB Logo" class="university-logo"/>Ruhr University Bochum
+                </a>
+            </h3>
+            <p><em>Bachelor of Science</em> (09/2017 – 03/2022)</p>
+            <ul>
+                <li>
+                    <span class="bold">Major, GPA:</span> Mechanical Engineering, 2.2
+                </li>
+                <li>
+                    <span class="bold">Specialization:</span> Design and
+                    Automation Engineering
+                </li>
+                <li>
+                    <span class="bold">Bachelor's Thesis:</span> Development of a Mobile
+                    Collaborative Robot System for Foaming Processes in the
+                    Automotive Industry
+                </li>
+            </ul>
+
+            <h3>
+                <a href="https://www.itu.edu.tr/" class="university-link">
+                    <img src="Logo/ITÜ.png" alt="ITÜ Logo" class="university-logo"/>Istanbul Technical University
+                </a>
+            </h3>
+            <p><em>Semester Abroad</em> (10/2020 – 03/2021)</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2023 Aram</p>
+        <p>
+            <a href="privacy_en.html">Legal</a>
+        </p>
+    </footer>
+</body>
+</html>
