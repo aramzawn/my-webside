@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Legal Notice - Zacharias Aram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Externe Schriftart -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Keine externen Icons erforderlich -->
+    <style>
+        /* Allgemeine Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 80px; /* Ausgleich für den fixierten Header */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        h1, h2, h3, h4, h5 {
+            margin: 0;
+        }
+        p {
+            line-height: 1.6;
+            text-align: justify;
+            hyphens: auto;
+        }
+        /* Navigation */
+        nav {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            position: fixed; /* Header fixiert */
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap; /* Verhindert Umbruch */
+        }
+        .nav-logo a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo a:hover {
+            transform: translateY(-5px);
+        }
+        .nav-logo img {
+            height: 50px;
+        }
+        .nav-items {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0; /* Verhindert Schrumpfen */
+            padding-right: 15px; /* Erhöht von 5px auf 15px */
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #f2f2f2;
+            font-weight: bold;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: #444;
+            border-radius: 4px;
+        }
+        /* Sprachumschalter */
+        .language-switcher {
+            margin-left: 10px; /* Margen reduziert */
+        }
+        .language-switcher img {
+            height: 12px; /* Flagge verkleinert */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .language-switcher img:hover {
+            transform: translateY(-5px);
+        }
+        /* Hamburger-Menü */
+        .nav-toggle {
+            display: none;
+        }
+        .nav-toggle-label {
+            display: none;
+            cursor: pointer;
+            margin-left: 10px; /* Margen reduziert */
+        }
+        .nav-toggle-label span,
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            display: block;
+            background-color: #f2f2f2;
+            height: 3px;
+            width: 25px;
+            border-radius: 3px;
+            position: relative;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            content: '';
+            position: absolute;
+        }
+        .nav-toggle-label span::before {
+            top: -8px;
+        }
+        .nav-toggle-label span::after {
+            top: 8px;
+        }
+        .nav-toggle:checked + .nav-toggle-label span {
+            background: transparent;
+        }
+        .nav-toggle:checked + .nav-toggle-label span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        .nav-toggle:checked + .nav-toggle-label span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+        .nav-toggle:checked ~ .nav-links {
+            display: flex;
+        }
+        /* Hauptinhalt */
+        main {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex: 1;
+        }
+        section {
+            margin-bottom: 60px;
+        }
+        section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            text-align: left;
+        }
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        footer p {
+            margin: 5px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #f2f2f2;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #ccc;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 10px; /* Padding reduziert */
+            }
+            .nav-logo img {
+                height: 40px; /* Logo verkleinert */
+            }
+            .nav-toggle-label {
+                display: block;
+                margin-left: 10px;
+            }
+            .nav-items {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end; /* Elemente nach rechts ausrichten */
+                flex-shrink: 0;
+                padding-right: 15px; /* Erhöht von 5px auf 15px */
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 10px; /* Menü von rechts ausklappen */
+                background-color: #1a1a1a;
+                z-index: 1;
+                width: 200px;
+            }
+            .nav-links a {
+                padding: 15px;
+                border-top: 1px solid #333;
+            }
+            .language-switcher {
+                margin-left: 5px;
+            }
+            .language-switcher img {
+                height: 10px; /* Flagge verkleinert */
+            }
+        }
+        /* Wichtige Begriffe fett darstellen */
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="../images/logo111.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav-items">
+            <!-- Hamburger-Menü -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+            <!-- Navigationslinks -->
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="berufserfahrung.html">Work Experience</a>
+                <a href="ausbildung.html">Education</a>
+                <a href="projekte.html">Projects</a>
+                <a href="kontakt.html">Contact</a>
+            </div>
+            <!-- Sprachumschalter -->
+            <div class="language-switcher">
+                <a href="../rechtliches.html">
+                    <img src="../images/DEU.png" alt="Deutsch">
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section>
+        <h2>Privacy Notice</h2>
+
+        <h3>I. Information about the Processing of Your Data pursuant to Art. 13 of the General Data Protection Regulation (GDPR)</h3>
+
+        <h4>1. Controller and Data Protection Officer</h4>
+        <p><strong>IMPRESSUM:</strong><br>
+        Zacharias Aram.<br>
+        You can reach the Data Protection Officer via email at<br>
+        <a href="mailto:zacha.aram@gmail.com">zacha.aram@gmail.com</a></p>
+
+        <h4>2. Data Processed for the Provision of the Website and the Creation of Log Files</h4>
+
+        <h5>a. Which data is processed for what purpose?</h5>
+        <p>
+            • Date and time of access<br>
+            • IP address<br>
+            • Hostname of the accessing computer<br>
+            • Website from which the website was accessed<br>
+            • Websites accessed through the website<br>
+            • Page visited on our website<br>
+            • Notification whether the retrieval was successful<br>
+            • Transferred data volume<br>
+            • Information about the browser type and version used<br>
+            • Operating system
+        </p>
+
+        <h5>b. On what legal basis is this data processed?</h5>
+        <p>The data is processed on the basis of Art. 6(1)(f) GDPR.</p>
+
+        <h5>c. Are there any recipients of the personal data besides the controller?</h5>
+        <p>The website is hosted on GitHub. The host receives the above-mentioned data as a data processor.</p>
+
+        <h5>d. How long is the data stored?</h5>
+        <p>
+            The data is deleted once it is no longer necessary for achieving the purpose of its collection. For the provision of the website, this is the case when the respective session is terminated. The log files are stored directly and exclusively accessible to administrators. Afterwards, they are only indirectly available through the reconstruction of backup tapes and are permanently deleted after a maximum of four weeks.
+        </p>
+
+        <h4>3. Rights of the Data Subject</h4>
+
+        <h5>a. Right of Access</h5>
+        <p>You can request access pursuant to Art. 15 GDPR to your personal data that we process.</p>
+
+        <h5>b. Right to Object</h5>
+        <p>You have the right to object for special reasons (see under Section II).</p>
+
+        <h5>c. Right to Rectification</h5>
+        <p>If the information concerning you is not (any longer) accurate, you can request rectification pursuant to Art. 16 GDPR. If your data is incomplete, you can request completion.</p>
+
+        <h5>d. Right to Erasure</h5>
+        <p>You can request the deletion of your personal data pursuant to Art. 17 GDPR.</p>
+
+        <h5>e. Right to Restriction of Processing</h5>
+        <p>You have the right to request restriction of the processing of your personal data pursuant to Art. 18 GDPR.</p>
+
+        <h5>f. Right to Lodge a Complaint</h5>
+        <p>
+            If you believe that the processing of your personal data violates data protection law, you have the right to lodge a complaint with a supervisory authority of your choice pursuant to Art. 77(1) GDPR. This includes the supervisory authority responsible for the controller: State Commissioner for Data Protection and Freedom of Information North Rhine-Westphalia, <a href="https://www.ldi.nrw.de/kontakt/ihre-beschwerde" target="_blank">https://www.ldi.nrw.de/kontakt/ihre-beschwerde</a>.
+        </p>
+
+        <h5>g. Right to Data Portability</h5>
+        <p>
+            If the conditions of Art. 20(1) GDPR are met, you have the right to receive data that we process automatically based on your consent or in fulfillment of a contract, and to transfer it to another controller. The collection of data for the provision of the website and the storage of log files are essential for the operation of the website. Therefore, they are not based on consent pursuant to Art. 6(1)(a) GDPR or on a contract pursuant to Art. 6(1)(b) GDPR, but are justified pursuant to Art. 6(1)(f) GDPR. Therefore, the conditions of Art. 20(1) GDPR are not met in this regard.
+        </p>
+
+        <h3>II. Right to Object pursuant to Art. 21(1) GDPR</h3>
+        <p>
+            You have the right to object at any time to the processing of your personal data, which is based on Article 6(1)(f) GDPR, for reasons arising from your particular situation. The controller will then no longer process the personal data, unless they can demonstrate compelling legitimate grounds for the processing which override your interests, rights, and freedoms, or the processing is necessary for the establishment, exercise, or defense of legal claims. The collection of data for the provision of the website and the storage of log files are essential for the operation of the website.
+        </p>
+
+        <h2>Legal Notices</h2>
+        <p><strong>Photos:</strong></p>
+        <ul>
+            <li><a href="https://images.app.goo.gl/8mRXkdGogCMw49nz5">Picture 1</a></li>
+            <li><a href="https://images.app.goo.gl/athHn1fTyrXsfgy99">Picture 2</a></li>
+            <li><a href="https://images.app.goo.gl/8uj8STVAqFdf5V7W9">Picture 3</a></li>
+            <li><a href="https://images.app.goo.gl/KBZHeujG3nBjM1SD9">Picture 4</a></li>
+            <li><a href="https://images.app.goo.gl/u1nhgDeUFPG85MCB7">Picture 5</a></li>
+            <li><a href="https://cademy.com/">Picture 6</a></li>
+            <li><a href="https://images.app.goo.gl/8W1V1jBp2nWRZB8j7">Picture 7</a></li>
+            <li>Flags: created by DALL-E</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Aram</p>
+    <p><a href="rechtliches.html">Legal Notice</a></p>
+</footer>
+
+</body>
+</html>
