@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Work Experience - Zacharias Aram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- External Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- No additional external icons required -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 80px; /* Compensate for fixed header */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        h1, h2, h3, h4 {
+            margin: 0;
+        }
+        p {
+            line-height: 1.6;
+            text-align: justify;
+        }
+        /* Navigation */
+        nav {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            position: fixed; /* Fixed header */
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap; /* Prevent wrapping */
+        }
+        .nav-logo a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo a:hover {
+            transform: translateY(-5px);
+        }
+        .nav-logo img {
+            height: 50px;
+        }
+        .nav-items {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0; /* Prevent shrinking */
+            padding-right: 15px; /* Increased padding */
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #f2f2f2;
+            font-weight: bold;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: #444;
+            border-radius: 4px;
+        }
+        /* Language Switcher */
+        .language-switcher {
+            margin-left: 10px; /* Reduced margin */
+        }
+        .language-switcher img {
+            height: 12px; /* Reduced flag size */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .language-switcher img:hover {
+            transform: translateY(-5px);
+        }
+        /* Hamburger Menu */
+        .nav-toggle {
+            display: none;
+        }
+        .nav-toggle-label {
+            display: none;
+            cursor: pointer;
+            margin-left: 10px; /* Reduced margin */
+        }
+        .nav-toggle-label span,
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            display: block;
+            background-color: #f2f2f2;
+            height: 3px;
+            width: 25px;
+            border-radius: 3px;
+            position: relative;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            content: '';
+            position: absolute;
+        }
+        .nav-toggle-label span::before {
+            top: -8px;
+        }
+        .nav-toggle-label span::after {
+            top: 8px;
+        }
+        .nav-toggle:checked + .nav-toggle-label span {
+            background: transparent;
+        }
+        .nav-toggle:checked + .nav-toggle-label span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        .nav-toggle:checked + .nav-toggle-label span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+        .nav-toggle:checked ~ .nav-links {
+            display: flex;
+        }
+        /* Main Content */
+        main {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex: 1;
+        }
+        section {
+            margin-bottom: 60px;
+        }
+        section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            text-align: left;
+        }
+        .job {
+            margin-bottom: 60px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .job-logo img {
+            max-width: 100px;
+            height: auto;
+        }
+        .job-details {
+            flex: 1;
+        }
+        .job-details h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+        }
+        .job-details h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #555;
+            font-weight: normal;
+        }
+        .job-details ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            text-align: justify;
+        }
+        .job-details li {
+            margin-bottom: 10px;
+        }
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        footer p {
+            margin: 5px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #f2f2f2;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #ccc;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 10px; /* Reduced padding */
+            }
+            .nav-logo img {
+                height: 40px; /* Reduced logo size */
+            }
+            .nav-toggle-label {
+                display: block;
+                margin-left: 10px;
+            }
+            .nav-items {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end; /* Align items to the right */
+                flex-shrink: 0;
+                padding-right: 15px; /* Increased padding */
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 10px; /* Slide menu from the right */
+                background-color: #1a1a1a;
+                z-index: 1;
+                width: 200px;
+            }
+            .nav-links a {
+                padding: 15px;
+                border-top: 1px solid #333;
+            }
+            .language-switcher {
+                margin-left: 5px;
+            }
+            .language-switcher img {
+                height: 10px; /* Reduced flag size */
+            }
+            .job {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .job-logo img {
+                max-width: 80px;
+                margin-bottom: 10px;
+            }
+        }
+        /* Highlight important terms in bold */
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="../images/logo111.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav-items">
+            <!-- Hamburger Menu -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="berufserfahrung.html" class="active">Work Experience</a>
+                <a href="ausbildung.html">Education</a>
+                <a href="projekte.html">Projects</a>
+                <a href="kontakt.html">Contact</a>
+            </div>
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+                <a href="../berufserfahrung.html">
+                    <img src="../images/DEU.png" alt="Deutsch">
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section>
+        <h2>Work Experience</h2>
+
+        <!-- LIS Job -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="../images/lis.png" alt="LIS Logo">
+            </div>
+            <div class="job-details">
+                <h3>LIS - Logistische Informationssysteme, Greven, Germany</h3>
+                <h4>IT – Project Consultant (September 2024 – Present)</h4>
+                <ul>
+                    <li>Utilizing <strong>Python</strong>, <strong>SQL</strong>, and <strong>Microsoft Office</strong> to optimize workflows and resolve technical challenges</li>
+                    <li>Serving as a liaison between <strong>IT development</strong> and <strong>clients</strong> to successfully implement IT solutions and manage projects efficiently</li>
+                    <li>Advising on the implementation and use of IT systems with a focus on <strong>process improvement</strong>, <strong>automation</strong>, and technological efficiency</li>
+                    <li>Conducting <strong>requirements analyses</strong> and implementing customized IT solutions to optimize logistical processes and introduce <strong>Warehouse Management Systems</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Comma Soft AG -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="../images/comma-soft.png" alt="Comma Soft Logo">
+            </div>
+            <div class="job-details">
+                <h3>Comma Soft AG</h3>
+                <h4>Working Student in IT Consulting (02/2024 – 08/2024)</h4>
+                <ul>
+                    <li>Programming and fine-tuning <strong>Microsoft DSC</strong> to provide customized <strong>Configuration Management Solutions</strong> and optimize IT infrastructure</li>
+                    <li>Utilizing <strong>Microsoft 365</strong> and <strong>Azure</strong> to develop and implement <strong>Digital Workplace</strong> solutions</li>
+                    <li>Contributing to the design and implementation of innovative <strong>Cloud Solutions</strong></li>
+                    <li>Applying a variety of tools and technologies in the areas of <strong>Cloud Infrastructure</strong> and <strong>IT Security</strong> to deliver comprehensive client solutions</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Ruhr University Bochum | Chair of Production Systems -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="../images/lps.png" alt="LPS Logo">
+            </div>
+            <div class="job-details">
+                <h3>Ruhr University Bochum | Chair of Production Systems</h3>
+                <h4>Research Assistant (07/2022 – 04/2023)</h4>
+                <ul>
+                    <li>Supporting and advising on the <strong>Digital Transformation</strong> of international companies</li>
+                    <li>Creating self-learning modules on topics such as <strong>Industry 4.0</strong> and <strong>Digital Business Models</strong></li>
+                    <li>Presenting self-learning modules within the international project consortium</li>
+                    <li>Conducting <strong>Workshops</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Cademy GmbH Bachelor Thesis -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="../images/cademy.jpeg" alt="Cademy Logo">
+            </div>
+            <div class="job-details">
+                <h3>Cademy GmbH</h3>
+                <h4>Bachelor Thesis: Project Management (08/2021 – 03/2022)</h4>
+                <ul>
+                    <li>Independently <strong>developing</strong> a mobile <strong>collaborative robotic system</strong> for the <strong>automotive industry</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Cademy GmbH Internship -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="../images/cademy.jpeg" alt="Cademy Logo">
+            </div>
+            <div class="job-details">
+                <h3>Cademy GmbH</h3>
+                <h4>Intern (03/2021 – 07/2021)</h4>
+                <ul>
+                    <li>Training in areas such as <strong>Controllino PLC</strong> (industrialized Arduino), <strong>Autonomous Transport Systems</strong>, <strong>Collaborative Robots</strong>, <strong>Design</strong>, and <strong>Additive Manufacturing</strong></li>
+                    <li>Supporting research for <strong>solvent-free manufacturing</strong> for the Fraunhofer Institute</li>
+                    <li>Preparatory and supportive work in <strong>Quality Testing</strong></li>
+                    <li>Programming <strong>Siemens LOGO</strong> control units</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- VEKA AG -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="../images/veka.png" alt="VEKA Logo">
+            </div>
+            <div class="job-details">
+                <h3>VEKA AG</h3>
+                <h4>Student Assistant (09/2019 – 10/2020)</h4>
+                <ul>
+                    <li>Assisting with <strong>Order Picking</strong> and <strong>Packing</strong></li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Aram</p>
+    <p><a href="rechtliches.html">Legal Notice</a></p>
+</footer>
+
+</body>
+</html>

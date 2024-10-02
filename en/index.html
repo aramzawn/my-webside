@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zacharias Aram - Mechanical Engineer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Externe Schriftart -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Keine zusätzlichen Icons erforderlich -->
+    <style>
+        /* Allgemeine Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            padding-top: 80px; /* Ausgleich für den fixierten Header */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        h1, h2 {
+            margin: 0;
+        }
+        p {
+            line-height: 1.6;
+            text-align: justify;
+        }
+        /* Navigation */
+        nav {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            position: fixed; /* Header fixiert */
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap; /* Verhindert Umbruch */
+        }
+        .nav-logo a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo a:hover {
+            transform: translateY(-5px);
+        }
+        .nav-logo img {
+            height: 50px;
+        }
+        .nav-items {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0; /* Verhindert Schrumpfen */
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #f2f2f2;
+            font-weight: bold;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: #444;
+            border-radius: 4px;
+        }
+        /* Sprachumschalter */
+        .language-switcher {
+            margin-left: 10px; /* Margen reduziert */
+        }
+        .language-switcher img {
+            height: 12px; /* Flagge verkleinert */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .language-switcher img:hover {
+            transform: translateY(-5px);
+        }
+        /* Hamburger-Menü */
+        .nav-toggle {
+            display: none;
+        }
+        .nav-toggle-label {
+            display: none;
+            cursor: pointer;
+            margin-left: 10px; /* Margen reduziert */
+        }
+        .nav-toggle-label span,
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            display: block;
+            background-color: #f2f2f2;
+            height: 3px;
+            width: 25px;
+            border-radius: 3px;
+            position: relative;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            content: '';
+            position: absolute;
+        }
+        .nav-toggle-label span::before {
+            top: -8px;
+        }
+        .nav-toggle-label span::after {
+            top: 8px;
+        }
+        .nav-toggle:checked + .nav-toggle-label span {
+            background: transparent;
+        }
+        .nav-toggle:checked + .nav-toggle-label span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        .nav-toggle:checked + .nav-toggle-label span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+        .nav-toggle:checked ~ .nav-links {
+            display: flex;
+        }
+        /* Header */
+        header {
+            background-color: #f5f5f5;
+            padding: 60px 20px;
+        }
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        .header-text {
+            flex: 1;
+        }
+        .header-text h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .header-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        .header-text .download-cv {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #1a1a1a;
+            color: #fff;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .header-text .download-cv:hover {
+            background-color: #333;
+            transform: translateY(-5px);
+        }
+        .header-image img {
+            max-width: 300px;
+            width: 100%;
+            border-radius: 50%;
+        }
+        /* Main Content */
+        main {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        section {
+            margin-bottom: 60px;
+        }
+        section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 20px;
+        }
+        footer p {
+            margin: 5px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #f2f2f2;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #ccc;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 10px; /* Padding reduziert */
+            }
+            .nav-logo img {
+                height: 40px; /* Logo verkleinert */
+            }
+            .nav-toggle-label {
+                display: block;
+                margin-left: 10px;
+            }
+            .nav-items {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end; /* Elemente nach rechts ausrichten */
+                flex-shrink: 0; /* Verhindert Schrumpfen */
+                padding-right: 15px; /* Erhöht von 5px auf 15px */
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 10px; /* Menü von rechts ausklappen */
+                background-color: #1a1a1a;
+                z-index: 1;
+                width: 200px;
+            }
+            .nav-links a {
+                padding: 15px;
+                border-top: 1px solid #333;
+            }
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-text {
+                order: 1; /* Text kommt zuerst */
+            }
+            .header-image {
+                order: 2; /* Bild kommt danach */
+            }
+            .language-switcher {
+                margin-left: 5px; /* Margen reduziert */
+            }
+            .language-switcher img {
+                height: 10px; /* Flagge verkleinert */
+            }
+        }
+        /* Wichtige Begriffe fett darstellen */
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="../images/logo111.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav-items">
+            <!-- Hamburger-Menü -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+            <!-- Navigationslinks -->
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="berufserfahrung.html">Work Experience</a>
+                <a href="ausbildung.html">Education</a>
+                <a href="projekte.html">Projects</a>
+                <a href="kontakt.html">Contact</a>
+            </div>
+            <!-- Sprachumschalter -->
+            <div class="language-switcher">
+                <a href="../index.html">
+                    <img src="../images/DEU.png" alt="Deutsch">
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <div class="header-container">
+        <div class="header-text">
+            <h1>Welcome</h1>
+            <p>Hello! I'm Zacharias Aram, a dedicated <strong>mechanical engineer</strong> with an <strong>excellent master's degree</strong> from the <strong>Ruhr University Bochum</strong>, specializing in <strong>automation technology</strong> and <strong>artificial intelligence</strong>. With my <strong>passion for technology</strong> and extensive experience in <strong>developing mobile robotic systems</strong>, <strong>IT</strong>, and <strong>international projects</strong>, I combine <strong>innovation</strong> and <strong>practice</strong>. My goal is to break new ground through the use of <strong>AI</strong> and <strong>automation</strong> and to set forward-thinking impulses in <strong>technology</strong>.</p>
+            <a href="../downloads/CV_Zacharias Aram.pdf" class="download-cv" download>Download CV</a>
+        </div>
+        <div class="header-image">
+            <img src="../images/123.png" alt="Zacharias Aram">
+        </div>
+    </div>
+</header>
+
+<main>
+    <section>
+        <h2>About Me</h2>
+        <p>My academic journey began with a <strong>Bachelor's degree in Mechanical Engineering</strong> at the <strong>Ruhr University Bochum</strong>, where I specialized in <strong>design</strong> and <strong>automation technology</strong>. A <strong>semester abroad</strong> in <strong>Turkey</strong> not only expanded my technical knowledge but also enhanced my <strong>intercultural competencies</strong> and <strong>social skills</strong>.</p>
+        <p>For my bachelor's thesis, I developed a mobile <strong>collaborative robotic system</strong> for the <strong>automotive industry</strong>. In this independently led project, I was able to gain extensive experience in <strong>control technology</strong>, <strong>programming</strong>, <strong>sensor technology</strong>, <strong>electronics</strong>, and <strong>mechatronics</strong>. This project underscored my ability to tackle complex technical challenges and realize innovative solutions.</p>
+        <p>Continuing my path of excellence in my master's studies, I achieved an outstanding grade point average. Parallel to my studies, I took on a position as a <strong>research assistant</strong>. As a student employee at the <strong>Chair of Production Systems</strong>, I not only deepened my <strong>presentation skills</strong> and technical knowledge but also demonstrated my ability to work in international teams and drive projects independently.</p>
+        <p>Following my position at the chair, I completed another <strong>semester abroad</strong> in <strong>Malaysia</strong>. This experience reinforced my commitment to continuous development and intercultural exchange.</p>
+        <p>My interest in cutting-edge technologies led me to choose my master's thesis: "<strong>Artificial Intelligence</strong> and <strong>Computer Vision</strong> for the Automated Recognition of Assembly Steps in the Context of <strong>Assistance Systems</strong>", marking the pinnacle of my academic journey. In this work, I not only acquired deep knowledge in <strong>AI</strong> and <strong>computer vision</strong> but also developed an innovative system that contributes to the improvement of production processes. Through the application of <strong>deep learning</strong> and <strong>image processing techniques</strong>, I was able to realize solutions that can find practical application in the industry.</p>
+        <p>While working on my master's thesis, I seized the opportunity to work at <strong>Comma Soft AG</strong> as a working student in <strong>IT consulting</strong>, where I expanded my knowledge in <strong>Microsoft DSC</strong>, <strong>Microsoft 365</strong>, and <strong>Azure</strong>. By developing an automation script with <strong>Microsoft DSC</strong>, I significantly contributed to increasing the efficiency of internal processes. This position allowed me to gain practical experience in IT consulting and deepen my understanding of digital workplace solutions.</p>
+        <p>Currently, I am working as an <strong>IT Application Consultant</strong> at <strong>LIS Logistische Informationssysteme GmbH</strong>, where I serve as an interface between IT development and customers. With my expertise in <strong>scripting (Python)</strong>, <strong>database management (SQL)</strong>, and <strong>Microsoft Office</strong>, I optimize workflows and solve complex technical challenges. I lead projects that result in significant <strong>process improvements</strong> and <strong>automations</strong>, enhancing the efficiency of our customers. Through my ability to communicate technical solutions understandably, I support customers in implementing and optimally using IT systems.</p>
+        <p>With my passion for <strong>automation</strong>, <strong>artificial intelligence</strong>, and <strong>IT</strong>, as well as my experience in <strong>consulting</strong> and <strong>project management</strong>, I am ready to set innovative accents in the IT industry. I possess strong <strong>communication skills</strong> and a performance-oriented mentality that enable me to successfully master both technical and interpersonal challenges.</p>
+        <p>I look forward to further expanding my knowledge, exploring new technologies, and shaping the future of <strong>IT</strong> and <strong>automation</strong> together with you!</p>
+    </section>
+
+    <section>
+        <h2>Personal Interests</h2>
+        <p>I am someone who loves the adventure of traveling and wants to explore the world from different perspectives. My heart beats for discovering new cultures, people, traditions, and culinary delights. This passion led me to insightful semesters abroad, and I feel honored to have already seen so much of the world and look forward to discovering even more!</p>
+        <p>In my free time, I find balance in strength training. The gym is my retreat where I leave behind the stress of everyday life and can organize my thoughts. Here, I recharge and find my inner peace.</p>
+        <p>I also greatly value the time I can spend with my family and friends. These moments of togetherness are a source of joy for me.</p>
+        <p>My desire is to constantly learn, grow, and enjoy life in all its facets. I am a person striving to discover new things and share them with others.</p>
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Aram</p>
+    <p><a href="rechtliches.html">Legal Notice</a></p>
+</footer>
+
+</body>
+</html>

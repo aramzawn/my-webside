@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekte - Zacharias Aram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Externe Schriftart -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Keine externen Icons erforderlich -->
+    <style>
+        /* Allgemeine Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 80px; /* Ausgleich für den fixierten Header */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        h1, h2, h3, h4, h5 {
+            margin: 0;
+        }
+        p {
+            line-height: 1.6;
+            text-align: justify;
+        }
+        /* Navigation */
+        nav {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            position: fixed; /* Header fixiert */
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap; /* Verhindert Umbruch */
+        }
+        .nav-logo a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo a:hover {
+            transform: translateY(-5px);
+        }
+        .nav-logo img {
+            height: 50px;
+        }
+        .nav-items {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0; /* Verhindert Schrumpfen */
+            padding-right: 15px; /* Erhöht von 5px auf 15px */
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #f2f2f2;
+            font-weight: bold;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: #444;
+            border-radius: 4px;
+        }
+        /* Sprachumschalter */
+        .language-switcher {
+            margin-left: 10px; /* Margen reduziert */
+        }
+        .language-switcher img {
+            height: 12px; /* Flagge verkleinert */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .language-switcher img:hover {
+            transform: translateY(-5px);
+        }
+        /* Hamburger-Menü */
+        .nav-toggle {
+            display: none;
+        }
+        .nav-toggle-label {
+            display: none;
+            cursor: pointer;
+            margin-left: 10px; /* Margen reduziert */
+        }
+        .nav-toggle-label span,
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            display: block;
+            background-color: #f2f2f2;
+            height: 3px;
+            width: 25px;
+            border-radius: 3px;
+            position: relative;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            content: '';
+            position: absolute;
+        }
+        .nav-toggle-label span::before {
+            top: -8px;
+        }
+        .nav-toggle-label span::after {
+            top: 8px;
+        }
+        .nav-toggle:checked + .nav-toggle-label span {
+            background: transparent;
+        }
+        .nav-toggle:checked + .nav-toggle-label span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        .nav-toggle:checked + .nav-toggle-label span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+        .nav-toggle:checked ~ .nav-links {
+            display: flex;
+        }
+        /* Hauptinhalt */
+        main {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex: 1;
+        }
+        section {
+            margin-bottom: 60px;
+        }
+        section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .project {
+            margin-bottom: 60px;
+        }
+        .project h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .content-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .content-block:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .content-text {
+            flex: 1;
+        }
+        .content-text h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .content-media {
+            flex: 1;
+        }
+        .content-media img,
+        .content-media video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 10px; /* Padding reduziert */
+            }
+            .nav-logo img {
+                height: 40px; /* Logo verkleinert */
+            }
+            .nav-toggle-label {
+                display: block;
+                margin-left: 10px;
+            }
+            .nav-items {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end; /* Elemente nach rechts ausrichten */
+                flex-shrink: 0;
+                padding-right: 15px; /* Erhöht von 5px auf 15px */
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 10px; /* Menü von rechts ausklappen */
+                background-color: #1a1a1a;
+                z-index: 1;
+                width: 200px;
+            }
+            .nav-links a {
+                padding: 15px;
+                border-top: 1px solid #333;
+            }
+            .language-switcher {
+                margin-left: 5px;
+            }
+            .language-switcher img {
+                height: 10px; /* Flagge verkleinert */
+            }
+            .content-block {
+                flex-direction: column;
+                align-items: center; /* Zentriert Inhalte */
+            }
+            .content-block:nth-child(even) {
+                flex-direction: column;
+            }
+            .content-media {
+                margin-bottom: 20px;
+                text-align: center; /* Zentriert Medien */
+            }
+            .content-media img,
+            .content-media video {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+        /* Wichtige Begriffe fett darstellen */
+        strong {
+            font-weight: bold;
+        }
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 20px;
+        }
+        footer p {
+            margin: 5px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #f2f2f2;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="images/logo111.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav-items">
+            <!-- Hamburger-Menü -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+            <!-- Navigationslinks -->
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="berufserfahrung.html">Berufserfahrung</a>
+                <a href="ausbildung.html">Ausbildung</a>
+                <a href="projekte.html" class="active">Projekte</a>
+                <a href="kontakt.html">Kontakt</a>
+            </div>
+            <!-- Sprachumschalter -->
+            <div class="language-switcher">
+                <a href="en/projekte.html">
+                    <img src="images/GB1.png" alt="English">
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section>
+        <h2>Projekte</h2>
+
+        <!-- Projekt 1 -->
+        <div class="project">
+            <h3>Masterarbeit: Künstliche Intelligenz und Computer Vision zur automatisierten Erkennung von Montageschritten im Kontext von Assistenzsystemen</h3>
+
+            <!-- Abschnitt 1 -->
+            <div class="content-block">
+                <div class="content-text">
+                    <h4>Aufgabenstellung</h4>
+                    <p>Das Projekt zielt darauf ab, ein Werkerassistenzsystem (WAS) für die Montage zu entwickeln, das KI-Methoden wie Computer Vision und Spracherkennung nutzt, um den Prozess der manuellen Montage zu verbessern. Die Motivation hinter diesem Projekt liegt im wachsenden Einsatz solcher Assistenzsysteme in der Industrie, um Mitarbeitende bei komplexen und fehleranfälligen Montageschritten zu unterstützen. Bisher sind viele dieser Systeme noch aufwendig in der Autorisierung und Anpassung an unterschiedliche Kontexte. Ziel der Arbeit ist es daher, eine automatisierte Erkennung von Montageschritten zu implementieren, um Mitarbeitende in Echtzeit durch den Montageprozess zu führen und gleichzeitig Fehler zu minimieren. Dies soll durch die Erkennung von Objekten, Handbewegungen und gesprochener Sprache realisiert werden, um schließlich Assistenzschritte zu erstellen oder diese automatisch auf ihre Richtigkeit zu überprüfen. Das System wurde unter realen Bedingungen an der Unilokk-Montagestation (siehe links) des Lehrstuhls für Produktionssysteme der Ruhr-Universität Bochum entwickelt und getestet.</p>
+                </div>
+                <div class="content-media">
+                    <img src="images/P.1.1.png" alt="Bild P1.1">
+                    <img src="images/p.1.2.png" alt="Bild P1.2" style="margin-top: 10px;">
+                </div>
+            </div>
+
+            <!-- Abschnitt 2 -->
+            <div class="content-block">
+                <div class="content-text">
+                    <h4>Methodik und Umsetzung</h4>
+                    <p>Die Umsetzung der Arbeit stützt sich auf Methoden der Computer Vision und der Spracherkennung, welche auf einem eigens erstellten Datensatz trainiert wurden. Als Basismodell wurde das YOLO-Objekterkennungsmodell verwendet, das für Echtzeit-Anwendungen optimiert ist. Zusätzlich wurde MediaPipe für die Hand Pose Estimation eingesetzt, um die Position und Bewegung der Hände in der Montage zu erkennen. Spracherkennungsalgorithmen wurden genutzt, um gesprochene Anweisungen zu transkribieren und in den Montageprozess zu integrieren. Die Entwicklung des Systems erfolgte unter Verwendung eines modularen Ansatzes, um die Flexibilität und Erweiterbarkeit zu gewährleisten. Ein besonderes Augenmerk lag auf der Integration der verschiedenen Teilsysteme, sodass sowohl visuelle als auch sprachliche Informationen verarbeitet und in einer benutzerfreundlichen Oberfläche zusammengeführt werden konnten.</p>
+                </div>
+                <div class="content-media">
+                    <video controls poster="images/video-thumbnail.png">
+                        <source src="videos/Werkerassistenzsystem_in_Aktion_Montageprozess_und_Fehlererkennung.mp4" type="video/mp4">
+                        Ihr Browser unterstützt das Video-Tag nicht.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Abschnitt 3 -->
+            <div class="content-block">
+                <div class="content-text">
+                    <h4>Ergebnisse und Evaluation</h4>
+                    <p>Das entwickelte Assistenzsystem wurde von mehreren unabhängigen Personen in einer realen Montagestation getestet und evaluiert. Die Ergebnisse zeigen, dass das System eine hohe Erkennungsgenauigkeit bei der Objekterkennung sowie eine effiziente Handbewegungsanalyse aufweist. Insbesondere bei der Fehlererkennung während der Montageprozesse konnte eine deutliche Reduktion der Fehlerquote festgestellt werden. Die Spracherkennung erwies sich als nützlich, um Montageschritte zu dokumentieren und bei der Schulung neuer Mitarbeitender zu unterstützen. Allerdings zeigte die Evaluation auch, dass das System in Bezug auf die Anpassungsfähigkeit an unterschiedliche Montagesituationen noch Verbesserungspotenzial hat. Besonders die Übertragbarkeit des Systems auf komplexere Montagesituationen und die Integration weiterer Sensoren und KI-Methoden wurden als zukünftige Forschungsansätze identifiziert.</p>
+                </div>
+                <div class="content-media">
+                    <img src="images/p3.png" alt="Bild P3">
+                </div>
+            </div>
+        </div>
+
+        <!-- Projekt 2 -->
+        <div class="project">
+            <h3>Bachelorarbeit: Entwicklung eines mobilen kollaborativen Robotersystems für Schäumungsprozesse in der Automobilindustrie</h3>
+
+            <!-- Abschnitt 1 -->
+            <div class="content-block">
+                <div class="content-text">
+                    <h4>Aufgabenstellung</h4>
+                    <p>Um die Flexibilität zu erhöhen und das Personal vor Ort zu unterstützen, ist geplant, den Schäumprozess für die Herstellung von Tüllen zu automatisieren. Dies soll mithilfe eines Robotersystems geschehen, das die manuelle Platzierung des Mischkopfs auf die Werkzeugöffnung ersetzt. Das Besondere an diesem Robotersystem ist, dass es die Positionen der Werkzeuge und deren Öffnungen eigenständig erkennen soll, anstatt vordefinierte Positionen anzufahren. Dies erhöht die Flexibilität, da sich die Anordnung und Anzahl der Schäumanlagen und Werkzeuge in den Werkerhallen oft ändert. Das Robotersystem muss ohne manuelle Neuprogrammierung in neuen Umgebungen funktionieren und in bestehende Anlagen integriert werden können. Es soll zwei Positionen für jedes Werkzeug bestimmen können: den Standort des Werkzeugs und die genaue Lage der Öffnung. Da die Werkzeuge unterschiedliche Größen und Formen haben, variieren die Positionen der Öffnungen in X-, Y- und Z-Richtung. Das Robotersystem muss auch in realen Industrieumgebungen funktionieren.</p>
+                </div>
+                <div class="content-media">
+                    <img src="images/Bild3.png" alt="Bild 1">
+                </div>
+            </div>
+
+            <!-- Abschnitt 2 -->
+            <div class="content-block">
+                <div class="content-text">
+                    <h4>Prototyp</h4>
+                    <p>Mit dem erfolgreichen Abschluss der Bachelorarbeit wurde ein vollständiger Prototyp realisiert, ein mobiler Manipulator bestehend aus zwei Teilsystemen. Dieser Prototyp wurde eigenständig entwickelt und zeichnet sich durch eine sorgfältige Konzeption und Entwurf aus, die darauf abzielten, spezifischen Anforderungen gerecht zu werden. Der Entwicklungsprozess umfasste die Gestaltung in verschiedenen Domänen wie Mechanik, Elektronik und Informatik. Im Anschluss an diese domänenspezifischen Entwürfe erfolgte die Systemintegration, bei der die einzelnen Domänen zu einem funktionierenden Gesamtsystem zusammengeführt wurden. Ein entscheidender Schritt war die Validierung und Verifizierung des Prototyps, um zu überprüfen, ob alle Anforderungen erfüllt wurden und an welchen Bereichen eventuell noch gearbeitet werden musste. Die Entwicklung, Auslegung und Konstruktion des Prototyps erfolgten dabei in eigenständiger Arbeit.</p>
+                </div>
+                <div class="content-media">
+                    <img src="images/Bild4.png" alt="Bild 4">
+                </div>
+            </div>
+
+            <!-- Abschnitt 3 -->
+            <div class="content-block">
+                <div class="content-text">
+                    <h4>Schnittstellendiagramm</h4>
+                    <p>Das Schnittstellendiagramm illustriert die Zusammensetzung und Interaktionen zwischen den zwei Teilsystemen des Gesamtsystems. Teilsystem 1 beinhaltet ein Fahrwerk, ausgestattet mit einer Vielzahl von Sensoren, die autonomes Fahren ermöglichen. Ein zentraler Sensor ist der Spurführungssensor, der speziell markierte Fahrbahnen erkennt, die durch fluoreszierende Bänder auf dem Boden gekennzeichnet sind. Hinzu kommt ein RFID-Gerät, das die Position der Werkzeuge erfasst und es dem Fahrzeug ermöglicht, sich entsprechend zu positionieren. Für die Bewegung sorgen zwei Motoren, die über H-Brücken gesteuert werden. Das Herzstück dieses Teilsystems bildet eine Controllino SPS-Steuerungseinheit, die mit C/C++ programmiert ist. Teilsystem 2 umfasst einen kollaborativen Roboter, den UR3, der mit notwendigen Sensoren wie einer Kamera und einem Distanzsensor ausgestattet ist. Diese Sensoren erlauben es dem Roboter, die Löcher der zu befüllenden Werkzeuge präzise zu lokalisieren und anzusteuern. Das Schnittstellendiagramm zeigt, wie diese beiden Teilsysteme interagieren, um eine nahtlose und effiziente Operation zu gewährleisten. Es veranschaulicht die Datenflüsse und Steuerbefehle zwischen dem Fahrwerk und dem Roboter, wobei besonderes Augenmerk auf die Integration der unterschiedlichen Sensortechnologien und der Steuereinheiten gelegt wird.</p>
+                </div>
+                <div class="content-media">
+                    <img src="images/Bild6.png" alt="Bild 6">
+                </div>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Aram</p>
+    <p><a href="rechtliches.html">Rechtliches</a></p>
+</footer>
+
+</body>
+</html>

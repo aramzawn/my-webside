@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Berufserfahrung - Zacharias Aram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Externe Schriftart -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Keine externen Icons erforderlich -->
+    <style>
+        /* Allgemeine Stile */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-top: 80px; /* Ausgleich für den fixierten Header */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        h1, h2, h3, h4 {
+            margin: 0;
+        }
+        p {
+            line-height: 1.6;
+            text-align: justify;
+        }
+        /* Navigation */
+        nav {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            position: fixed; /* Header fixiert */
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap; /* Verhindert Umbruch */
+        }
+        .nav-logo a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo a:hover {
+            transform: translateY(-5px);
+        }
+        .nav-logo img {
+            height: 50px;
+        }
+        .nav-items {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0; /* Verhindert Schrumpfen */
+            padding-right: 15px; /* Erhöht von 5px auf 15px */
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #f2f2f2;
+            font-weight: bold;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: #444;
+            border-radius: 4px;
+        }
+        /* Sprachumschalter */
+        .language-switcher {
+            margin-left: 10px; /* Margen reduziert */
+        }
+        .language-switcher img {
+            height: 12px; /* Flagge verkleinert */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .language-switcher img:hover {
+            transform: translateY(-5px);
+        }
+        /* Hamburger-Menü */
+        .nav-toggle {
+            display: none;
+        }
+        .nav-toggle-label {
+            display: none;
+            cursor: pointer;
+            margin-left: 10px; /* Margen reduziert */
+        }
+        .nav-toggle-label span,
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            display: block;
+            background-color: #f2f2f2;
+            height: 3px;
+            width: 25px;
+            border-radius: 3px;
+            position: relative;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            content: '';
+            position: absolute;
+        }
+        .nav-toggle-label span::before {
+            top: -8px;
+        }
+        .nav-toggle-label span::after {
+            top: 8px;
+        }
+        .nav-toggle:checked + .nav-toggle-label span {
+            background: transparent;
+        }
+        .nav-toggle:checked + .nav-toggle-label span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        .nav-toggle:checked + .nav-toggle-label span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+        .nav-toggle:checked ~ .nav-links {
+            display: flex;
+        }
+        /* Hauptinhalt */
+        main {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex: 1;
+        }
+        section {
+            margin-bottom: 60px;
+        }
+        section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            text-align: left;
+        }
+        .job {
+            margin-bottom: 60px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .job-logo img {
+            max-width: 100px;
+            height: auto;
+        }
+        .job-details {
+            flex: 1;
+        }
+        .job-details h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+        }
+        .job-details h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #555;
+            font-weight: normal;
+        }
+        .job-details ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            text-align: justify;
+        }
+        .job-details li {
+            margin-bottom: 10px;
+        }
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        footer p {
+            margin: 5px 0;
+            text-align: center;
+        }
+        footer a {
+            color: #f2f2f2;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #ccc;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 10px; /* Padding reduziert */
+            }
+            .nav-logo img {
+                height: 40px; /* Logo verkleinert */
+            }
+            .nav-toggle-label {
+                display: block;
+                margin-left: 10px;
+            }
+            .nav-items {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end; /* Elemente nach rechts ausrichten */
+                flex-shrink: 0;
+                padding-right: 15px; /* Erhöht von 5px auf 15px */
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 10px; /* Menü von rechts ausklappen */
+                background-color: #1a1a1a;
+                z-index: 1;
+                width: 200px;
+            }
+            .nav-links a {
+                padding: 15px;
+                border-top: 1px solid #333;
+            }
+            .language-switcher {
+                margin-left: 5px;
+            }
+            .language-switcher img {
+                height: 10px; /* Flagge verkleinert */
+            }
+            .job {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .job-logo img {
+                max-width: 80px;
+                margin-bottom: 10px;
+            }
+        }
+        /* Wichtige Begriffe fett darstellen */
+        strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="images/logo111.png" alt="Logo">
+            </a>
+        </div>
+        <div class="nav-items">
+            <!-- Hamburger-Menü -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+            <!-- Navigationslinks -->
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="berufserfahrung.html" class="active">Berufserfahrung</a>
+                <a href="ausbildung.html">Ausbildung</a>
+                <a href="projekte.html">Projekte</a>
+                <a href="kontakt.html">Kontakt</a>
+            </div>
+            <!-- Sprachumschalter -->
+            <div class="language-switcher">
+                <a href="en/berufserfahrung.html">
+                    <img src="images/GB1.png" alt="English">
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section>
+        <h2>Berufserfahrung</h2>
+
+        <!-- LIS Job -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="images/lis.png" alt="LIS Logo">
+            </div>
+            <div class="job-details">
+                <h3>LIS Logistische Informationssysteme GmbH</h3>
+                <h4>IT - Project Consultant (09/2024 – Heute)</h4>
+                <ul>
+                    <li>Anwendung technischer Fähigkeiten in <strong>Scripting (Python)</strong>, <strong>Datenbankmanagement (SQL)</strong> und <strong>Microsoft Office</strong> zur Optimierung von Workflows und Lösung komplexer technischer Herausforderungen</li>
+                    <li>Verantwortliche Schnittstelle zwischen <strong>IT-Entwicklung</strong> und externen <strong>Kunden</strong> zur Sicherstellung des erfolgreichen Einsatzes von <strong>IT-Lösungen</strong> und effizienter <strong>Projektleitung</strong></li>
+                    <li>Beratung und Unterstützung von Kunden bei der Implementierung und optimalen Nutzung von IT-Systemen mit Fokus auf <strong>Prozessverbesserung</strong>, <strong>Automatisierung</strong> und technologische Effizienz</li>
+                    <li>Durchführung detaillierter <strong>Anforderungsanalysen</strong> und Implementierung maßgeschneiderter IT-Lösungen zur Optimierung logistischer Prozesse und Einführung von <strong>Warehouse Management Systemen</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Comma Soft Job -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="images/comma-soft.png" alt="Comma Soft Logo">
+            </div>
+            <div class="job-details">
+                <h3>Comma Soft AG</h3>
+                <h4>Werkstudent im IT Consulting (02/2024 – 08/2024)</h4>
+                <ul>
+                    <li>Programmierung und Feinabstimmung von <strong>Microsoft DSC</strong> zur Bereitstellung maßgeschneiderter <strong>Konfigurationsmanagement-Lösungen</strong> und Optimierung der IT-Infrastruktur</li>
+                    <li>Einsatz von <strong>Microsoft 365</strong> und <strong>Azure</strong> zur Entwicklung und Implementierung von <strong>Digital Workplace</strong> Lösungen</li>
+                    <li>Mitwirkung bei der Konzeption und Umsetzung innovativer <strong>Cloud-Lösungen</strong></li>
+                    <li>Anwendung einer Vielzahl von Tools und Technologien im Bereich <strong>Cloud-Infrastruktur</strong> und <strong>IT-Sicherheit</strong> zur Bereitstellung umfassender Kundenlösungen</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- LPS Job -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="images/lps.png" alt="LPS Logo">
+            </div>
+            <div class="job-details">
+                <h3>Ruhr-Universität Bochum | Lehrstuhl für Produktionssysteme</h3>
+                <h4>Wissenschaftlicher Assistent (07/2022 – 04/2023)</h4>
+                <ul>
+                    <li>Unterstützung und Beratung bei der <strong>digitalen Transformation</strong> von internationalen Unternehmen</li>
+                    <li>Erstellung von Selbstlernmodulen zu den Themen <strong>Industrie 4.0</strong> und <strong>digitale Geschäftsmodelle</strong></li>
+                    <li>Vorstellung der Selbstlernmodule im internationalen Projektkonsortium</li>
+                    <li>Durchführung von <strong>Workshops</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Cademy Bachelorand Job -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="images/cademy.jpeg" alt="Cademy Logo">
+            </div>
+            <div class="job-details">
+                <h3>Cademy GmbH</h3>
+                <h4>Bachelorand: Projektleitung (08/2021 – 03/2022)</h4>
+                <ul>
+                    <li>Eigenständige <strong>Entwicklung</strong> eines mobilen <strong>kollaborativen Robotersystems</strong> für die <strong>Automobilindustrie</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Cademy Praktikum Job -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="images/cademy.jpeg" alt="Cademy Logo">
+            </div>
+            <div class="job-details">
+                <h3>Cademy GmbH</h3>
+                <h4>Fachpraktikant (03/2021 – 07/2021)</h4>
+                <ul>
+                    <li>Einarbeitung in Themenbereiche wie <strong>Controllino SPS</strong> (industrialisierter Arduino), <strong>Fahrerlose Transportsysteme</strong>, <strong>kollaborative Roboter</strong>, <strong>Konstruktion</strong> und <strong>Additive Fertigung</strong></li>
+                    <li>Unterstützende Tätigkeit bei der Forschung für <strong>trennmittelfreie Fertigung</strong> für das Fraunhofer Institut</li>
+                    <li>Vorbereitende und unterstützende Tätigkeit bei der <strong>Qualitätsprüfung</strong></li>
+                    <li>Programmierung von <strong>Siemens LOGO</strong> Steuereinheiten</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- VEKA Job -->
+        <div class="job">
+            <div class="job-logo">
+                <img src="images/veka.png" alt="VEKA Logo">
+            </div>
+            <div class="job-details">
+                <h3>VEKA AG</h3>
+                <h4>Studentische Aushilfe (09/2019 – 10/2020)</h4>
+                <ul>
+                    <li>Mitarbeit bei der <strong>Kommissionierung</strong> und <strong>Verpackung</strong></li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 Aram</p>
+    <p><a href="rechtliches.html">Rechtliches</a></p>
+</footer>
+
+</body>
+</html>
